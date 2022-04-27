@@ -1,0 +1,29 @@
+<!-- 
+    Modelo padrão de formulário, para nao ter que repetir codigo DRY 
+    Este é um Partial (o nome do negocio)
+    o arquivo sempre começa com um "_" mas na hora de ser referenciado, não se é utilizado 
+-->
+
+<%= form_with model: article do |form| %>
+    <div>
+        <%= form.label :titulo %> <br/>
+        <%= form.text_field :title %>
+        
+        <% @article.errors.full_messages_for(:title).each do |message| %>
+            <div> <%= message %> </div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :corpo %> <br/>
+        <%= form.text_field :body %>
+
+        <% @article.errors.full_messages_for(:body).each do |message| %>
+            <div> <%= message %> </div>
+        <% end %>
+    </div>
+    <br/>
+    <div>
+    <%= form.submit %>
+    </div>
+<% end %>
