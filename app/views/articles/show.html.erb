@@ -1,18 +1,35 @@
 <h1> <%= @article.title %> </h1>
 <p> <%= @article.body %></p>
 
-<ul>
-    <li><%= link_to "Editar", edit_article_path(@article) %></li>
-    <li><%= link_to "Excluir", 
-            article_path(@article), 
-            data: {
-                turbo_method: :delete, 
-                turbo_confirm: "Mesmo mesmo?"
-            }
-        %>
-    </li>
+<h2> Comentariossss </h2>
+    <%= render @article.comentarios%>
 
-  <br/>
-  <li><%= link_to "Voltar", root_path %></li>
-</ul>
+<h2> Faça um comentário! </h2>
+    <%= form_with model: [@article, @article.comentarios.build] do |form|%>
+        <p> 
+            <%= form.label :nome %>
+            <%= form.text_field :nome %>
+        </p>
+        <p> 
+            <%= form.label :comentario %>
+            <%= form.text_field :comentario %>
+        </p>
+        <p>
+            <%= form.submit%>
+        </p>
+    <% end %>
 
+    <ul>
+        <li><%= link_to "Editar", edit_article_path(@article) %></li>
+        <li><%= link_to "Excluir", 
+                article_path(@article), 
+                data: {
+                    turbo_method: :delete, 
+                    turbo_confirm: "Mesmo mesmo?"
+                }
+            %>
+        </li>
+
+        <br/>
+        <li><%= link_to "Voltar", root_path %></li>
+    </ul>
