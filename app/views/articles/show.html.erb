@@ -15,6 +15,10 @@
             <%= form.text_field :comentario %>
         </p>
         <p>
+            <%= form.label :status %>
+            <%= form.select :status, ['publico', 'privado', 'arquivado'], selected: 'publico' %>
+        </p>
+        <p>
             <%= form.submit%>
         </p>
     <% end %>

@@ -1,11 +1,16 @@
 <h1>Artigo!</h1>
 
+<p> Temos <%= Article.contador %> artigos publicados!</p>
+
 <ul>
     <% @articles.each do |article|%>
-    <li>
-        <%= link_to article.title, article %>
-    </li>
+        <% unless article.arquivado? %>
+        <li>
+            <%= link_to article.title, article %>
+        </li>
+        <% end %>
     <% end %>
+
 </ul>
 
 <%= link_to "Criar novo artigo", new_article_path %>

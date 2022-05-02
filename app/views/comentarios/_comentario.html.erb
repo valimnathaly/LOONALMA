@@ -1,3 +1,5 @@
+<% unless comentario.arquivado? %>
+
 <p>
     <strong> Nome: </strong>
     <%= comentario.nome%>
@@ -6,4 +8,13 @@
     <strong> Comentario: </strong>
     <%= comentario.comentario %>
 </p>
+<p>
+    <%= link_to "destroy", [comentario.article, comentario], 
+        data: {
+            turbo_method: :delete,
+            turbo_confirm: "Tem certeza?"
+        }
+    %>
+</p>
 <hr/>
+<%end%>
